@@ -2,13 +2,13 @@ import ko = require('knockout');
 
 const serverUrl = 'http://localhost:8080/tasks';
 
-interface ITask {
-    title: string;
+interface Task {
+    text: string;
 }
 
 class ViewModel {
-    tasks: KnockoutObservableArray<ITask> = ko.observableArray<ITask>([]);
-    newTask: KnockoutObservable<ITask> = ko.observable<ITask>({ title: '' });
+    tasks: KnockoutObservableArray<Task> = ko.observableArray<Task>([]);
+    newTask: KnockoutObservable<Task> = ko.observable<Task>({ text: '' });
 
     constructor() {
         this.load();
@@ -16,7 +16,7 @@ class ViewModel {
 
     async load() {
         const response = await fetch(serverUrl);
-        const tasks = await response.json() as ITask[];
+        const tasks = await response.json() as Task[];
         this.tasks(tasks);
     }
 
@@ -28,13 +28,16 @@ class ViewModel {
             serverUrl, 
             {
                 method: 'POST',
-                body: JSON.stringify(newTask)
+                body: JSON.stringify(newTask),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }
         );
         // add to local collection
         this.tasks.push(newTask);
         // reset the form
-        this.newTask({title: ''});
+        this.newTask({text: ''});
     }
 }
 

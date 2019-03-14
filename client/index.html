@@ -10,14 +10,14 @@
     <h2>Tasks</h2>
     <ul data-bind="foreach: tasks">
         <li>
-            <span data-bind="text: title"></span>
+            <span data-bind="text: text"></span>
         </li>
     </ul>
     <h4>Create new task</h4>
     <form data-bind="submit: save">
         <div>
             Title:
-            <input type="text" data-bind="value: newTask().title" />
+            <input type="text" data-bind="value: newTask().text" />
         </div>
         <div>
             <button type="submit">Save</button>
