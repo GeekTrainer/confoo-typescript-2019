@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "target": "es6",
+        "noImplicitAny": true,
+        "noEmitOnError": true,
+        "lib": [
+            "es2015",
+            "dom"
+        ],
+        "outDir": "scripts"
+    },
+    "include": [
+        "source/index.ts",
+        "source/require-config.ts"
+    ],
+}

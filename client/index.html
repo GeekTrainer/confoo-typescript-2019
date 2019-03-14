@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Tasks</h2>
+    <ul data-bind="foreach: tasks">
+        <li>
+            <span data-bind="text: title"></span>
+        </li>
+    </ul>
+    <h4>Create new task</h4>
+    <form data-bind="submit: save">
+        <div>
+            Title:
+            <input type="text" data-bind="value: newTask().title" />
+        </div>
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <script>
+        require(['scripts/require-config.js'], () => {
+            require(["/scripts/index.js"]);        
+        });
+    </script>
+</body>
+</html>
